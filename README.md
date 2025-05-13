@@ -27,10 +27,10 @@ project/
 ├── app/
 │   ├── index.js          # Main application code
 │   ├── package.json      # Node.js dependencies
-│   └── Dockerfile        # Docker configuration
 ├── k8s/
 │   ├── app-deployment.yaml    # Kubernetes deployment
 │   └── mongo-secret.yaml      # MongoDB credentials (not in git)
+├── Dockerfile        # Docker configuration
 └── README.md
 ```
 
@@ -38,8 +38,8 @@ project/
 
 1. **Clone the repository**
    ```bash
-   git clone [your-repository-url]
-   cd [repository-name]
+   git clone https://github.com/Yui-000/sit323-2024-t1-prac7p
+   cd sit323-2024-t1-prac7p
    ```
 
 2. **Set up MongoDB**
