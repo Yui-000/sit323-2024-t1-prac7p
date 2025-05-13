@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cloud-db-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cloud-db-app
+  template:
+    metadata:
+      labels:
+        app: cloud-db-app
+    spec:
+      containers:
+      - name: cloud-db-app
+        image: yui000/cloud-db-app
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGO_URI
+          valueFrom:
+            secretKeyRef:
+              name: mongo-secret
+              key: mongo-uri
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cloud-db-service
+spec:
+  selector:
+    app: cloud-db-app
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 3000
+  type: LoadBalancer
